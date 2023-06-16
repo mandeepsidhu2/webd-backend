@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mandeep.sidhu2@gmail.com" id="009_create_emails_table">
+        <createTable tableName="emails">
+            <column name="profile_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email_data" type="JSONB" />
+        </createTable>
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="009_001_notnull">
+        <addNotNullConstraint schemaName="public" tableName="emails" columnName="profile_id" columnDataType="BIGINT" />
+        <addNotNullConstraint schemaName="public" tableName="emails" columnName="email_data" columnDataType="JSONB" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="009_002_index_profile_emails">
+        <createIndex indexName="index_emails_on_profile_id" schemaName="public" tableName="emails" unique="true">
+            <column name="profile_id" type="BIGINT" />
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

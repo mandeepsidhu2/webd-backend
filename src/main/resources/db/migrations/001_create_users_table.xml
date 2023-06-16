@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_001_create_users_table">
+        <createTable tableName="users">
+            <column name="user_id" type="BIGINT" />
+            <column name="locale" type="VARCHAR" />
+            <column name="sub" type="VARCHAR" />
+            <column name="name" type="VARCHAR" />
+            <column name="email" type="VARCHAR" />
+            <column name="picture_url" type="VARCHAR" />
+            <column name="resume_present" type="BOOLEAN" />
+            <column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+            <column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_002_add_auto_incrementing">
+        <addAutoIncrement columnDataType="BIGINT" columnName="user_id" incrementBy="1"
+                          schemaName="public" startWith="0" tableName="users"/>
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_003_primayConstraint_users">
+        <addPrimaryKey columnNames="user_id" constraintName="pkey_users" tableName="users" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_004_uniqueConstraint_users">
+        <addUniqueConstraint columnNames="user_id" constraintName="unqKeys_users" tableName="users" />
+        <addUniqueConstraint columnNames="sub" constraintName="unqKeys_sub" tableName="users" />
+        <addUniqueConstraint columnNames="email" constraintName="unqKeys_email" tableName="users" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_005_notNullConstraint_users">
+        <addNotNullConstraint schemaName="public" tableName="users" columnName="user_id" columnDataType="BIGINT" />
+        <addNotNullConstraint schemaName="public" tableName="users" columnName="resume_present" columnDataType="VARCHAR" />
+        <addNotNullConstraint schemaName="public" tableName="users" columnName="email" columnDataType="VARCHAR" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="001_006_index_users">
+        <createIndex indexName="index_users_on_sub" schemaName="public" tableName="users" unique="true">
+            <column name="sub" type="VARCHAR" />
+        </createIndex>
+        <createIndex indexName="index_users_on_users_id" schemaName="public" tableName="users" unique="true">
+            <column name="user_id" type="BIGINT" />
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

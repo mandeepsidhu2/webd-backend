@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mandeep.sidhu2@gmail.com" id="024_001_create_custom_link_table">
+        <createTable tableName="custom_links">
+            <column name="id" type="BIGINT" />
+            <column name="link_group" type="VARCHAR" />
+            <column name="group_id" type="BIGINT" />
+            <column name="link_type" type="VARCHAR" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mandeep.sidhu2@gmail.com" id="024_003_create_custom_link_table">
+        <createIndex indexName="index_on_custom_link" schemaName="public" tableName="custom_links" unique="true">
+            <column name="link_group" type="INT" />
+            <column name="group_id" type="INT" />
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

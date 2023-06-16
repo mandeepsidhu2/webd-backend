@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd ">
+    <include file="db/migrations/001_create_users_table.xml"/>
+    <include file="db/migrations/002_create_websites_table.xml"/>
+    <include file="db/migrations/003_create_rank_widgets.xml"/>
+    <include file="db/migrations/004_create_portfolios_table.xml"/>
+    <include file="db/migrations/005_create_contest_widget.xml"/>
+    <include file="db/migrations/006_create_frontend_configurations_table.xml"/>
+    <include file="db/migrations/007_create_personal_projects_table.xml"/>
+    <include file="db/migrations/008_add_last_logged_in_column_to_users.xml"/>
+    <include file="db/migrations/009_create_emails_table.xml"/>
+    <include file="db/migrations/010_add_cloud_resume_link_to_portfolios.xml"/>
+    <include file="db/migrations/011_add_tech_stack_and_description_to_personal_projects.xml"/>
+    <include file="db/migrations/012_add_link_to_rank_widget.xml"/>
+    <include file="db/migrations/013_add_website_type_to_websites.xml"/>
+    <include file="db/migrations/014_add_social_link_to_portfolios_table.xml"/>
+    <include file="db/migrations/015_add_college_name_to_portfolios_table.xml"/>
+    <include file="db/migrations/016_create_universities_table.xml"/>
+    <include file="db/migrations/017_add_graduation_level_to_portfolio.xml"/>
+    <include file="db/migrations/018_add_plan_id_to_users.xml"/>
+    <include file="db/migrations/019_create_plans_table.xml"/>
+    <include file="db/migrations/020_create_course_table.xml"/>
+    <include file="db/migrations/021_create_experience_widget_table.xml"/>
+    <include file="db/migrations/022_add_courses_and_experience_widgets_limit.xml"/>
+    <include file="db/migrations/023_add_cookie_accepted_column_to_users.xml"/>
+    <include file="db/migrations/024_create_custom_link_table.xml"/>
+    <include file="db/migrations/025_add_views_to_portfolio_entity.xml"/>
+    <include file="db/migrations/026_create_logs_table.xml"/>
+    <include file="db/migrations/027_add_auto_incrementing_to_custom_links.xml"/>
+    <include file="db/migrations/028_add_user_type_to_users.xml"/>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mandeep.sidhu2@gmail.com" id="020_001_create_course_table">
+        <createTable tableName="course_widgets">
+            <column name="id" type="BIGINT" />
+            <column name="certificate_link" type="VARCHAR" />
+            <column name="course_name" type="VARCHAR" />
+            <column name="issuer" type="VARCHAR" />
+            <column name="invisible" type="BOOLEAN" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mandeep.sidhu2@gmail.com" id="020_002_add_auto_incrementing">
+        <addAutoIncrement columnDataType="BIGINT" columnName="id" incrementBy="1"
+                          schemaName="public" startWith="0" tableName="course_widgets"/>
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="020_003_primaryConstraint_course_widget">
+        <addPrimaryKey columnNames="id" constraintName="pkey_course" tableName="course_widgets" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="020_004_notNullConstraint_course_widget">
+        <addNotNullConstraint schemaName="public" tableName="course_widgets" columnName="id" columnDataType="BIGINT" />
+        <addNotNullConstraint schemaName="public" tableName="course_widgets" columnName="course_name" columnDataType="VARCHAR" />
+        <addNotNullConstraint schemaName="public" tableName="course_widgets" columnName="issuer" columnDataType="VARCHAR" />
+    </changeSet>
+</databaseChangeLog>

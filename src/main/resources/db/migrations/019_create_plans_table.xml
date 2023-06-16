@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_001_create_plans_table">
+        <createTable tableName="plans">
+            <column name="plan_id" type="INT" />
+            <column name="rank_widget_max" type="INT" />
+            <column name="contest_widget_max" type="INT" />
+            <column name="personal_project_max" type="INT" />
+            <column name="email_per_day_limit" type="INT" />
+            <column name="plan_name" type="VARCHAR" />
+            <column name="plan_price" type="INT" />
+            <column name="country_id" type="VARCHAR" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_002_add_auto_incrementing">
+        <addAutoIncrement columnDataType="BIGINT" columnName="plan_id" incrementBy="1"
+                          schemaName="public" startWith="0" tableName="plans"/>
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_003_primaryConstraint_plans">
+        <addPrimaryKey columnNames="plan_id" constraintName="pkey_plans" tableName="plans" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_004_uniqueConstraint_plans">
+        <addUniqueConstraint columnNames="plan_id" constraintName="unqKeys_plans" tableName="plans" />
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_005_notNullConstraint_plans">
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="plan_id" columnDataType="INT" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="country_id" columnDataType="VARCHAR" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="rank_widget_max" columnDataType="INT" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="contest_widget_max" columnDataType="INT" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="personal_project_max" columnDataType="INT" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="email_per_day_limit" columnDataType="INT" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="plan_name" columnDataType="VARCHAR" />
+        <addNotNullConstraint schemaName="public" tableName="plans" columnName="plan_price" columnDataType="INT" />
+
+    </changeSet>
+    <changeSet author="mandeep.sidhu2@gmail.com" id="019_006_index_plans">
+        <createIndex indexName="index_plans_on_id" schemaName="public" tableName="plans" unique="true">
+            <column name="plan_id" type="INT" />
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
